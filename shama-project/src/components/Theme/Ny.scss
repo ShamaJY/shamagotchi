@@ -9,24 +9,15 @@
     }
 }
 
-@keyframes themeDown {
-    0%{
-        top: -100%;
-    }
-    100%{
-        top: 0;
-    }
-    
-}
 
 .NyTheme{
     position: absolute;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background: url(../../img/bg_ny.png) 0 0 / 120% 100% repeat-x;
     // animation: movingLeft 5s linear infinite;
-    animation: themeDown 2s forwards;
     &.movingLeft{
         // background-position: -100% 0;
         animation:themeDown 2s forwards, movingLeft 5s linear forwards alternate;

@@ -6,6 +6,7 @@ import Ny from './Theme/Ny';
 
 const Screen = ({isPark, isNy, isLeft, isRight, action, count, isStart, isActive, ToggleClass}) => {
     console.log(isPark)
+    console.log(isNy)
     return (
         <div className="screen">
             {

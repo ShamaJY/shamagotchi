@@ -14,7 +14,7 @@ const Main = () => {
     const [isLeft, setIsLeft] = useState(false)
     const [isRight, setIsRight] = useState(false)
     const [isNy, setNy] = useState(false)
-    const [isPark, setIsPark] = useState(false)
+    const [isPark, setIsPark] = useState(true)
     // 저장된 상태값 불러오기 
     useEffect(() => {
         const active = JSON.parse(localStorage.getItem('isActive') === "false")
@@ -83,7 +83,6 @@ const Main = () => {
 
     // 핀 삭제 
     useEffect(() => {
-        setIsPark(true)
         if(isStart){
             setTimeout(() => {
                 setIsRemove(true)
@@ -124,14 +123,8 @@ const Main = () => {
 
     // 배경 전환
     function changeBG(e){
-        if(e.className = "btnNY"){
-            setNy(true)
-            setIsPark(false)
-        }
-        else if(e.className = "btnPark"){
-            setIsPark(true)
-            setNy(false)
-        }
+        setNy(!isNy)
+        setIsPark(!isPark)
     }
     return (
         <div className="wrapper" id='capture'>
@@ -153,9 +146,11 @@ const Main = () => {
                 </div>
             </div>
             {
-                !isNy ? <button type='button' className='btnNY' onClick={changeBG}><span className='vh'>newyork background</span></button> : <button type='button' className='btnPark' onClick={changeBG}><span className='vh'>park background</span></button>
+                isPark && <button type='button' className='btnNY' onClick={changeBG}><span className='vh'>newyork background</span></button>
             }
-            
+            {
+                isNy && <button type='button' className='btnPark' onClick={changeBG}><span className='vh'>park background</span></button>
+            }
             <p className='copyright'>&copy; 2022 SMGC</p>
         </div>
     );
