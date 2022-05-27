@@ -10,7 +10,7 @@ const Screen = ({isPark, isNy, isLeft, isRight, action, count, isStart, isActive
     return (
         <div className="screen">
             {
-                isPark ? <Park isLeft={isLeft} isRight={isRight} count={count}/> : null
+                isStart && isPark ? <Park isLeft={isLeft} isRight={isRight} count={count}/> : null
             }
             {
                 isNy ? <Ny isLeft={isLeft} isRight={isRight} count={count}/> : null
