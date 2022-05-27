@@ -13,6 +13,7 @@ const Main = () => {
     const [isRemove, setIsRemove] = useState(false)
     const [isLeft, setIsLeft] = useState(false)
     const [isRight, setIsRight] = useState(false)
+    const [isNy, setNy] = useState(false)
     // 저장된 상태값 불러오기 
     useEffect(() => {
         const active = JSON.parse(localStorage.getItem('isActive') === "false")
@@ -115,12 +116,19 @@ const Main = () => {
             setCount(10)
         }
     },[count])
+
+    // 배경 전환
+    function changeBG(e){
+        if(e.className = "btnNY"){
+            setNy(true)
+        }
+    }
     return (
         <div className="wrapper" id='capture'>
             <div className="device">
                 <div className="imgWrap">
                     <img src={FrontImage} width="800" height="auto" className="deviceImg" alt="다마고치"/>
-                    <Screen ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
+                    <Screen isNy={isNy} ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
                     {/* 버튼 */}
                     <div className="controlBtn_wrap">
                         <button type="button" className="left" onClick={(e) => trigger("left")}><span className="vh">left</span></button>
@@ -134,6 +142,7 @@ const Main = () => {
                     }
                 </div>
             </div>
+            <button type='button' className='btnNY'><span className='vh'>newyork background</span></button>
             <p className='copyright'>&copy; 2022 SMGC</p>
         </div>
     );

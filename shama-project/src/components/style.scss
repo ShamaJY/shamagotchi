@@ -333,6 +333,17 @@ body{
     }
 }
 
+.btnNY{
+    position: fixed;
+    right: 5%;
+    bottom: 5%;
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    background: url(../img/btn_ny_1.png)  no-repeat 0 0;
+    background-size: 100%;
+}
+
 
 
 @media (min-width: 768px) and (max-width: 1123px){
