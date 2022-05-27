@@ -14,6 +14,7 @@ const Main = () => {
     const [isLeft, setIsLeft] = useState(false)
     const [isRight, setIsRight] = useState(false)
     const [isNy, setNy] = useState(false)
+    const [isPark, setIsPark] = useState(false)
     // 저장된 상태값 불러오기 
     useEffect(() => {
         const active = JSON.parse(localStorage.getItem('isActive') === "false")
@@ -81,11 +82,15 @@ const Main = () => {
     },[action])
 
     // 핀 삭제 
-    if(isStart){
-        setTimeout(() => {
-            setIsRemove(true)
-        },5000)
-    }
+    useEffect(() => {
+        setIsPark(true)
+        if(isStart){
+            setTimeout(() => {
+                setIsRemove(true)
+            },5000)
+        }
+    })
+
     // 키보드 동작 
     document.onkeydown = checkKey;
     function checkKey(e) {
@@ -121,6 +126,11 @@ const Main = () => {
     function changeBG(e){
         if(e.className = "btnNY"){
             setNy(true)
+            setIsPark(false)
+        }
+        else if(e.className = "btnPark"){
+            setIsPark(true)
+            setNy(false)
         }
     }
     return (
@@ -128,7 +138,7 @@ const Main = () => {
             <div className="device">
                 <div className="imgWrap">
                     <img src={FrontImage} width="800" height="auto" className="deviceImg" alt="다마고치"/>
-                    <Screen isNy={isNy} ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
+                    <Screen isPark={isPark} isNy={isNy} ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
                     {/* 버튼 */}
                     <div className="controlBtn_wrap">
                         <button type="button" className="left" onClick={(e) => trigger("left")}><span className="vh">left</span></button>
@@ -142,7 +152,10 @@ const Main = () => {
                     }
                 </div>
             </div>
-            <button type='button' className='btnNY'><span className='vh'>newyork background</span></button>
+            {
+                !isNy ? <button type='button' className='btnNY' onClick={changeBG}><span className='vh'>newyork background</span></button> : <button type='button' className='btnPark' onClick={changeBG}><span className='vh'>park background</span></button>
+            }
+            
             <p className='copyright'>&copy; 2022 SMGC</p>
         </div>
     );
