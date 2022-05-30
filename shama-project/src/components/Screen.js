@@ -13,7 +13,7 @@ const Screen = ({isPark, isNy, isLeft, isRight, action, count, isStart, isActive
                 isStart && isPark ? <Park isLeft={isLeft} isRight={isRight} count={count}/> : null
             }
             {
-                isNy ? <Ny isLeft={isLeft} isRight={isRight} count={count}/> : null
+                isStart && isNy ? <Ny isLeft={isLeft} isRight={isRight} count={count}/> : null
             }
             {
                 isStart ? <Avatar isLeft={isLeft} isRight={isRight} action={action} isStart={isStart} count={count}/> : null
