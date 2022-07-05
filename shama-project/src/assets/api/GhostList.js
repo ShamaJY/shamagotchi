@@ -30,8 +30,8 @@ export default [
         saying : ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
     },
     {
-        id: "0867",
-        img: './user/0867.png',
+        id: "0868",
+        img: './user/0868.png',
         saying : ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
     },
     {
